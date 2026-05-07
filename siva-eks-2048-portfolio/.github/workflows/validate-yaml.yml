@@ -1,0 +1,17 @@
+name: Validate Kubernetes YAML
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Kustomize build
+        run: kubectl kustomize manifests/
